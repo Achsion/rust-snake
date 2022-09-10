@@ -25,19 +25,6 @@ fn main() -> Result<()> {
     const FIELD_HEIGHT: u32 = 41;
     let mut board = Board::new(FIELD_WIDTH, FIELD_HEIGHT);
 
-    /*
-    const FIELD_LEN: usize = (FIELD_WIDH * FIELD_HEIGHT) as usize;
-    let mut prepared_fields: [FieldType; FIELD_LEN] = [FieldType::EMPTY; FIELD_LEN];
-    for i in 0..FIELD_LEN {
-        prepared_fields[i] = if i % 3 == 0 || i % 7 == 0 { FieldType::EMPTY } else { FieldType::SNAKE };
-        if i % 9 == 0 {
-            prepared_fields[i] = FieldType::APPLE;
-        }
-    }
-
-    board.set_fields(&prepared_fields);
-     */
-
     execute!(
         stdout,
         EnterAlternateScreen,
