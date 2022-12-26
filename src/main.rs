@@ -85,6 +85,13 @@ fn main() -> Result<()> {
                     MoveTo((FIELD_WIDTH * 2 + 3) as u16, 1),
                     Print("GAME OVER!")
                 )?;
+                let mut score: String = "Score: ".to_string();
+                score.push_str(&*board.snake_length.to_string());
+                queue!(
+                    stdout,
+                    MoveTo((FIELD_WIDTH * 2 + 3) as u16, 3),
+                    Print(score)
+                )?
             }
 
             stdout.flush()?;
