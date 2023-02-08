@@ -12,21 +12,11 @@ pub enum Direction {
 impl Direction {
     pub fn from_key_code(key_code: KeyCode) -> Option<Direction> {
         return match key_code {
-            KeyCode::Up => {
-                Some(Direction::Up)
-            }
-            KeyCode::Down => {
-                Some(Direction::Down)
-            }
-            KeyCode::Left => {
-                Some(Direction::Left)
-            }
-            KeyCode::Right => {
-                Some(Direction::Right)
-            }
-            _ => {
-                None
-            }
+            KeyCode::Up => Some(Direction::Up),
+            KeyCode::Down => Some(Direction::Down),
+            KeyCode::Left => Some(Direction::Left),
+            KeyCode::Right => Some(Direction::Right),
+            _ => None,
         };
     }
 

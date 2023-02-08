@@ -1,6 +1,6 @@
+use crate::direction::Direction;
 use crate::field::{Field, FieldType};
 use rand::Rng;
-use crate::direction::Direction;
 
 pub struct Board {
     width: u32,
@@ -9,7 +9,7 @@ pub struct Board {
     head_idx: u32,
     pub(crate) direction: Direction,
     pub(crate) snake_length: u32,
-    pub(crate) game_over: bool
+    pub(crate) game_over: bool,
 }
 
 impl Board {
@@ -23,7 +23,7 @@ impl Board {
             head_idx,
             direction: Direction::None,
             snake_length: 1,
-            game_over: false
+            game_over: false,
         };
 
         return_obj.generate_apple_field();
@@ -120,7 +120,7 @@ impl Board {
 
     pub fn row_as_string(&self, row: u32) -> Option<String> {
         if row >= self.height {
-            return None
+            return None;
         }
 
         let mut row_string = String::new();
@@ -129,9 +129,13 @@ impl Board {
         let line = &self.fields[start..end];
         for column in 0..line.len() {
             let field = line[column];
-            let symbol = if self.get_index(row, column as u32) as u32 == self.head_idx { "██" } else { FieldType::get_printable(field.field_type) };
+            let symbol = if self.get_index(row, column as u32) as u32 == self.head_idx {
+                "██"
+            } else {
+                FieldType::get_printable(field.field_type)
+            };
             row_string.push_str(symbol);
         }
-        return Some(row_string)
+        return Some(row_string);
     }
 }

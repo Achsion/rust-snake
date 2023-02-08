@@ -2,7 +2,7 @@
 pub enum FieldType {
     EMPTY,
     APPLE,
-    SNAKE
+    SNAKE,
 }
 
 impl FieldType {
@@ -10,7 +10,7 @@ impl FieldType {
         match field_type {
             FieldType::APPLE => "◀▶",
             FieldType::SNAKE => "▓▓",
-            _ => "░░"
+            _ => "░░",
         }
     }
 }
@@ -18,14 +18,14 @@ impl FieldType {
 #[derive(Debug, Clone, Copy)]
 pub struct Field {
     pub(crate) field_type: FieldType,
-    pub longevity: u32
+    pub longevity: u32,
 }
 
 impl Field {
     pub fn new() -> Field {
         Field {
             field_type: FieldType::EMPTY,
-            longevity: 0
+            longevity: 0,
         }
     }
 

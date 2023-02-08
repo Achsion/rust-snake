@@ -1,16 +1,18 @@
 use crate::board::Board;
+use crate::direction::Direction;
 use crossterm::{
     cursor::{Hide, MoveTo, Show},
     event::{poll, read, Event, KeyCode, KeyEvent},
-    execute,
-    queue,
+    execute, queue,
     style::{Color, Print, ResetColor, SetForegroundColor},
-    terminal::{Clear, ClearType, EnterAlternateScreen, LeaveAlternateScreen, disable_raw_mode, enable_raw_mode},
+    terminal::{
+        disable_raw_mode, enable_raw_mode, Clear, ClearType, EnterAlternateScreen,
+        LeaveAlternateScreen,
+    },
     Result,
 };
 use std::io::{stdout, Write};
 use std::time::{Duration, Instant};
-use crate::direction::Direction;
 
 mod board;
 mod direction;
@@ -48,7 +50,9 @@ fn main() -> Result<()> {
                     _ => {
                         let new_direction = Direction::from_key_code(code);
                         if new_direction.is_some() {
-                            if !Direction::check_opposite(new_direction.unwrap(), board.direction) || board.snake_length <= 1 {
+                            if !Direction::check_opposite(new_direction.unwrap(), board.direction)
+                                || board.snake_length <= 1
+                            {
                                 next_direction = new_direction.unwrap();
                             } else {
                                 next_direction = board.direction;
